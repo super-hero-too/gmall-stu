@@ -67,14 +67,16 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         //查询是否有相同用户名的用户
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
-        List<UmsAdmin> umsAdminList = adminMapper.selectByExample(example);
-        if (umsAdminList.size() > 0) {
+        UmsAdmin umsAdmin1 = adminMapper.selectByUserName(umsAdmin.getUsername());
+        if (umsAdmin1 != null) {
+            System.out.println("查询到相同用户名");
             return null;
         }
         //将密码进行加密操作
         String encodePassword = passwordEncoder.encode(umsAdmin.getPassword());
         umsAdmin.setPassword(encodePassword);
-        adminMapper.insert(umsAdmin);
+        int insert = adminMapper.insert(umsAdmin);
+        System.out.println("插入数据条数:insert:"+insert);
         return umsAdmin;
     }
 

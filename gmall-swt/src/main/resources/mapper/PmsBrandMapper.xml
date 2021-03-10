@@ -13,6 +13,8 @@
     <result column="logo" jdbcType="VARCHAR" property="logo" />
     <result column="big_pic" jdbcType="VARCHAR" property="bigPic" />
   </resultMap>
+
+
   <select id="selectByExample" parameterType="com.ls.demo.mbg.model.PmsBrandExample" resultMap="BaseResultMap">
     select * from pms_brand
   </select>
