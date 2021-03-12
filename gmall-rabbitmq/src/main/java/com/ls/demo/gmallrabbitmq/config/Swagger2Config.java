@@ -1,4 +1,4 @@
-package com.ls.demo.gmallmybatisplus1.config;
+package com.ls.demo.gmallrabbitmq.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 //为当前包下controller生成API文档
-                .apis(RequestHandlerSelectors.basePackage("com.ls.demo.gmallmybatisplus1.modules.pms.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.ls.demo.gmallrabbitmq.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 //添加登录认证

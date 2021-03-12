@@ -25,15 +25,16 @@ public class DemoController {
 
     /**
      * 查询数据
+     *
      * @return
      */
     @GetMapping("/getListAll")
     @ApiOperation("查询所有的品牌")
     @ResponseBody
-    public CommonResult getListAll(){
+    public CommonResult getListAll() {
         List<PmsBrand> list = demoService.list();
-        if (list.size()==0) {
-           return CommonResult.failed("没有查询到数据");
+        if (list.size() == 0) {
+            return CommonResult.failed("没有查询到数据");
         }
         return CommonResult.success(list);
     }

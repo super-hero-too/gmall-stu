@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class DemoServiceImpl extends ServiceImpl<DemoMapper,PmsBrand> implements DemoService {
+public class DemoServiceImpl extends ServiceImpl<DemoMapper, PmsBrand> implements DemoService {
 
 }

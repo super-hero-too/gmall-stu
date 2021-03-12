@@ -34,9 +34,9 @@ public class PmsBrandController {
     @ApiOperation("查询所有的品牌")
     @GetMapping("/getListAll")
     @ResponseBody
-    public CommonResult getListAll(){
+    public CommonResult getListAll() {
         List<PmsBrand> list = pmsBrandService.list();
-        if(list.size()==0){
+        if (list.size() == 0) {
             return CommonResult.failed("没有查询到数据.");
         }
         return CommonResult.success(list);
