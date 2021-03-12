@@ -5,12 +5,14 @@ import com.ls.demo.gmallmybatisplus1.mbg.model.PmsBrand;
 import com.ls.demo.gmallmybatisplus1.service.DemoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -38,5 +40,6 @@ public class DemoController {
         }
         return CommonResult.success(list);
     }
+
 
 }

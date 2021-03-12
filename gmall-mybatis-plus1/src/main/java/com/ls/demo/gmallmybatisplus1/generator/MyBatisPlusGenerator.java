@@ -23,7 +23,8 @@ import java.util.Scanner;
 public class MyBatisPlusGenerator {
 
     public static void main(String[] args) {
-        String projectPath = System.getProperty("user.dir") + "/gmall-mybatis-plus1";//项目地址
+//        String projectPath = System.getProperty("user.dir") + "/gmall-mybatis-plus1";//项目地址
+        String projectPath = System.getProperty("user.dir") + "/gmall-aop";//项目地址
         //String moduleName = scanner("模块名");
         String moduleName = "pms";
         //String[] tableNames = scanner("表名，多个英文逗号分割").split(",");
