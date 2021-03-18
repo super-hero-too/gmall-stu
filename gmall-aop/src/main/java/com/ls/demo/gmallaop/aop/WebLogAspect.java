@@ -5,6 +5,9 @@ import cn.hutool.core.util.URLUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.druid.support.json.JSONUtils;
+import com.ls.demo.gmallaop.api.CommonPage;
+import com.ls.demo.gmallaop.api.CommonResult;
+import com.ls.demo.gmallaop.modules.pms.model.PmsBrand;
 import io.swagger.annotations.ApiOperation;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -81,6 +84,7 @@ public class WebLogAspect {
         webLog.setUri(request.getRequestURI());
         webLog.setUrl(request.getRequestURL().toString());
         LOGGER.info("{}", webLog.toString());
+
         return result;
     }
 
