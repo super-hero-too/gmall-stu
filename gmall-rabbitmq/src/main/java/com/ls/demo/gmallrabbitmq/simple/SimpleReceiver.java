@@ -17,6 +17,7 @@ package com.ls.demo.gmallrabbitmq.simple;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 
@@ -30,6 +31,7 @@ public class SimpleReceiver {
 
     @RabbitHandler
     public void receive(String in) {
+
         LOGGER.info(" [x] Received '{}'", in);
     }
 
