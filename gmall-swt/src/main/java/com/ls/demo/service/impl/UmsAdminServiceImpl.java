@@ -1,5 +1,6 @@
 package com.ls.demo.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import com.ls.demo.config.utils.JwtTokenUtil;
 import com.ls.demo.dao.UmsAdminRoleRelationDao;
 import com.ls.demo.mbg.mapper.UmsAdminMapper;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -46,14 +48,28 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private UmsAdminMapper adminMapper;
     @Autowired
     private UmsAdminRoleRelationDao adminRoleRelationDao;
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;//redis
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
-        UmsAdminExample example = new UmsAdminExample();
-        example.createCriteria().andUsernameEqualTo(username);
-        List<UmsAdmin> adminList = adminMapper.selectByExample(example);
-        if (adminList != null && adminList.size() > 0) {
-            return adminList.get(0);
+        //先查询redis没有查询到数据后在查询数据库
+        UmsAdmin umsAdmin = null;
+        umsAdmin = (UmsAdmin) redisTemplate.opsForValue().get("username:"+username);
+        //没有查询到数据
+        if(umsAdmin==null){
+            UmsAdminExample example = new UmsAdminExample();
+            example.createCriteria().andUsernameEqualTo(username);
+            umsAdmin = adminMapper.selectByUserName(username);
+            if (umsAdmin != null ) {
+                System.out.println("从数据库查询出来的数据:"+ JSONUtil.toJsonStr(umsAdmin));
+                redisTemplate.opsForValue().set("username:"+username,umsAdmin);
+                return umsAdmin;
+            }else{
+                System.out.println("从数据库查询为空:"+ JSONUtil.toJsonStr(umsAdmin));
+            }
+        }else{
+            return umsAdmin;
         }
         return null;
     }

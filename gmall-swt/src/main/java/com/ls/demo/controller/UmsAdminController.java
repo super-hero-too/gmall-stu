@@ -1,5 +1,6 @@
 package com.ls.demo.controller;
 
+import com.ls.demo.annotation.CacheException;
 import com.ls.demo.common.api.CommonResult;
 import com.ls.demo.dto.UmsAdminLoginParam;
 import com.ls.demo.mbg.model.UmsAdmin;
