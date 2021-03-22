@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.ls.demo.gmallmybatisplus1.mbg.mapper")
+@MapperScan("com.ls.demo.gmalles.dao")
 public class MyBatisConfig {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
